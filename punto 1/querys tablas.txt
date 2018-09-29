@@ -1,0 +1,112 @@
+CREATE TABLE USUARIOS (
+    id_Usuario integer,
+    documento_Identidad VARCHAR2(15),
+    nombre VARCHAR2(20),
+    apellidos VARCHAR(20),
+    url_Foto VARCHAR(35),
+    celular NUMERIC,
+    Lenguaje VARCHAR2(15),
+    id_Email integer,
+    id_Envio_Recibos integer,
+    id_Ciudad integer   
+)
+
+CREATE TABLE CIUDADES (
+    id_Cidudad integer,
+    ciudad VARCHAR2(20),
+    moneda VARCHAR2(3)
+)
+
+CREATE TABLE ENVIORECIBOS (
+    idEnvio integer,
+    descripcion VARCHAR2(20)
+)
+
+CREATE TABLE EMAILS (
+    idEmail integer,
+    Email VARCHAR2(20)
+)
+
+CREATE TABLE PAGOS (
+    idPago integer,
+    idDetalleViaje integer,
+    idUsuario integer,
+    cantidadPagadores integer,
+    cargosAdicionales decimal(10, 2)
+)
+
+CREATE TABLE MEDIOPAGO(
+    idMedioPago integer,
+    Descripcion VARCHAR2(20)
+)
+
+CREATE TABLE DETALLEMEDIOPAGO(
+    idDetalleMedioPago integer,
+    tipoCuenta integer,
+    numeroCuenta integer,
+    codigoSeguridad integer,
+    fechaVencimiento integer,
+    id_Usuario integer    
+)
+
+CREATE TABLE VIAJE (
+    idViaje integer,
+    idConductor integer,
+    idUsuario integer,
+    idpago integer
+)
+
+CREATE TABLE DETALLEVIAJE (
+    idDetalleViaje integer,
+    fecha DATE,
+    hora TIMESTAMP,
+    valor decimal(10, 2),
+    idciudad integer,
+    idServicio integer,
+    estadoViaje VARCHAR2(20),
+    valorTarifaDinamica decimal(10, 2),
+    idViaje integer
+)
+
+CREATE TABLE TIPOSERVICIO (
+    idServicio integer,
+    descripcion VARCHAR2(20)
+)
+
+CREATE TABLE CONDUCTOR (
+    idConductor integer,
+    documentoIdentidad VARCHAR2(15),
+    nombre VARCHAR2(20),
+    apellidos VARCHAR2(20),
+    urlFoto VARCHAR2(30),
+    celular integer,
+    lenguaje VARCHAR2(20),
+    idCiudad integer,
+    idEmail integer, 
+    idVehiculo integer,
+    idPagoConductor integer
+)
+
+CREATE TABLE VEHICULO ( 
+    idVehiculo integer,
+    placa VARCHAR(10),
+    modelo VARCHAR(10),
+    marca VARCHAR(20),
+    anhoVehiculo integer
+)
+
+CREATE TABLE PAGOCONDUCTOR (
+    idPagoConductor integer,
+    numeroCuenta integer,
+    entidadCuenta VARCHAR(20)
+)
+
+CREATE TABLE DETALLERECORRIDO (
+    idDetalleRecorrido integer,
+    direccionOrigen VARCHAR(20),
+    direccionDestino VARCHAR(20),
+    idDetalleViaje integer,
+    latitud VARCHAR(20),
+    longitud VARCHAR(20),
+    distanciaKM integer
+)
